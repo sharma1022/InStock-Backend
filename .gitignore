@@ -1,8 +1,5 @@
-.env
+# Miscellaneous
 .DS_Store
-node_modules
-
-# recommended gitignore for node:
 
 # Logs
 logs
