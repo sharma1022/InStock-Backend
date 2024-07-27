@@ -3,7 +3,7 @@ const knex = require("knex")(require("../knexfile"));
 //get detail for a specific item:
 const details = async (req, res) => {
 	try {
-		const itemFound = await knex("inventory").where({
+		const itemFound = await knex("inventories").where({
 			id: req.params.id,
 		});
 
