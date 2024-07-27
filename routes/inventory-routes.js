@@ -4,8 +4,7 @@ const router = require("express").Router();
 const inventoryController = require("../controllers/inventory-controllers");
 
 //delegate request processing to the controller functions:
-//all items:
-router.route("/").get(inventoryController.allItems);
+
 //single item
 router.route("/:id").get(inventoryController.details);
 

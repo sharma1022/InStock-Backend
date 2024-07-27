@@ -1,17 +1,5 @@
 const knex = require("knex")(require("../knexfile"));
 
-//get list of all items:
-const allItems = async (req, res) => {
-	try {
-		const data = await knex("inventory");
-		res.status(200).json(data);
-	} catch (error) {
-		res.status(400).json({
-			message: `Unable to retrieve data: ${error}`,
-		});
-	}
-};
-
 //get detail for a specific item:
 const details = async (req, res) => {
 	try {
