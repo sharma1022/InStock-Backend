@@ -35,8 +35,16 @@ npm run seed
 
 ### Feature/ GET single item details
 
--   define inventory page routes
--   link page routes to inventory controller
--   define GET request for details of a single item
--   awaiting database for testing
--   tested and working
+-   Define inventory page routes
+-   Link page routes to inventory controller
+-   Define GET request for details of a single item
+-   Awaiting database for testing (resolved)
+-   Migrate database tables
+-   Tested and working
+-   Seed database tables
+
+### Feature/ POST new inventory item
+
+-   Create controller function
+-   Chose the cascading style of 'if/else if' checks for validation so that reponses could be specific
+-   Awaiting 'GET warehouse-list' API to be completed so that the warehouse # can be checked
