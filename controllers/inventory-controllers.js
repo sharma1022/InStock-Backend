@@ -8,6 +8,7 @@ const details = async (req, res) => {
 		});
 
 		if (itemFound.length === 0) {
+			console.log(itemFound);
 			return res.status(404).json({
 				message: `Item ID ${req.params.id} not found`,
 			});
@@ -22,4 +23,4 @@ const details = async (req, res) => {
 	}
 };
 
-module.exports = { allItems, details };
+module.exports = { details };

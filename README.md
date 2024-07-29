@@ -39,3 +39,4 @@ npm run seed
 -   link page routes to inventory controller
 -   define GET request for details of a single item
 -   awaiting database for testing
+-   tested and working
