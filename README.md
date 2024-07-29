@@ -8,6 +8,31 @@
 
 ## Develop Branch
 
+## Migrations and Seeds
+
+### Installation
+
+-   Create a .env file locally and add values for the following variables.
+
+```bash
+  PORT=8080
+  DB_HOST=127.0.0.1
+  DB_NAME=instock
+  DB_USER=
+  DB_PASSWORD=
+```
+
+-   Create a database locally called instock
+-   Run the following commands
+
+```bash
+npm run migrate
+```
+
+```bash
+npm run seed
+```
+
 ### Feature/ GET single item details
 
 -   define inventory page routes
