@@ -2,7 +2,7 @@ const router = require("express").Router();
 const warehouseController = require("../controllers/warehouse-controllers");
 
 //GET list of all items:
-router.route("/").get(inventoryController.warehouseList);
+router.route("/").get(warehouseController.warehouseList);
 
 router.route("/:id").get(warehouseController.findOne);
 

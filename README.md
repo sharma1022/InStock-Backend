@@ -43,4 +43,6 @@ npm run seed
 
 ### Feature/ GET all warehouses
 
--   create route for GET-warehouse-list
+-   Create route for GET-warehouse-list
+-   Create controller function to send the list of warehouses
+-   Tested API with Postman, working on my end
