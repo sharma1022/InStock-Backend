@@ -40,3 +40,7 @@ npm run seed
 -   define GET request for details of a single item
 -   awaiting database for testing
 -   tested and working
+
+### Feature/ GET all warehouses
+
+-   create route for GET-warehouse-list
