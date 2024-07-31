@@ -13,11 +13,6 @@ const warehouseRoutes = require("./routes/warehouses-routes");
 app.use("/inventory", inventoryRoutes);
 app.use("/warehouses", warehouseRoutes);
 
-// basic home route:
-app.get("/", (req, res) => {
-	res.send("Welcome to my API");
-});
-
 app.listen(PORT, () => {
 	console.log(`running at http://localhost:${PORT} 👍`);
 });
