@@ -19,8 +19,9 @@ const findOne = async (req,res) => {
     }
 };
 
+//POST /warehouses
 const add = async(req,res) => {
-    if(!req.body.warehouse_name || !req.bod.address || !req.body.city || !req.body.country || !req.body.contact_name || !req.body.contact_position || !req.body.contact_phone || !req.body.contact_email){
+    if(!req.body.warehouse_name || !req.body.address || !req.body.city || !req.body.country || !req.body.contact_name || !req.body.contact_position || !req.body.contact_phone || !req.body.contact_email){
         return res.status(400).json({
             message:"Missing Information"
         });
@@ -38,4 +39,4 @@ const add = async(req,res) => {
     }
 }
 
-module.exports = {findOne};
+module.exports = {findOne, add};
