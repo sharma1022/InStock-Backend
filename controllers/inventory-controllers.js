@@ -23,7 +23,7 @@ const details = async (req, res) => {
   }
 };
 
-// PUT /inventory/:id
+// PATCH /inventory/:id
 const update = async (req, res) => {
   try {
     const rowsUpdated = await knex("inventories")
@@ -47,4 +47,4 @@ const update = async (req, res) => {
   }
 };
 
-module.exports = { details };
+module.exports = { details, update };

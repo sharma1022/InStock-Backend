@@ -5,7 +5,12 @@ const inventoryController = require("../controllers/inventory-controllers");
 
 //delegate request processing to the controller functions:
 
-//single item
-router.route("/:id").get(inventoryController.details);
+
+router
+  .route("/:id")
+  //single item
+  .get(inventoryController.details)
+  //update inventory item
+  .patch(inventoryController.update);
 
 module.exports = router;
