@@ -19,4 +19,24 @@ const findOne = async (req,res) => {
     }
 };
 
-module.exports = {findOne};
+//POST /warehouses
+const add = async(req,res) => {
+    if(!req.body.warehouse_name || !req.body.address || !req.body.city || !req.body.country || !req.body.contact_name || !req.body.contact_position || !req.body.contact_phone || !req.body.contact_email){
+        return res.status(400).json({
+            message:"Missing Information"
+        });
+    }
+
+    try{
+        const result = await knex("warehouses").insert(req.body);
+
+        const newWarehouseId = result[0];
+        const createdWarehouse = await knex("warehouses").where({id: newWarehouseId});
+
+        res.status(201).json(createdWarehouse);
+    } catch(e){
+        res.status(500).json({message:`Unable to create new warehouse: ${error}`});
+    }
+}
+
+module.exports = {findOne, add};
