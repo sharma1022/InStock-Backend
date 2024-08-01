@@ -54,3 +54,8 @@ npm run seed
 - Create controller function to send the list of warehouses
 - Tested API with Postman, working on my end
 
+### Feature/ DELETE inventory item by id
+
+- defined DELETE request to delete an inventory item based on its id
+- add delete route to inventory-routes.js
+- tested delete code, added temp variables to test, will remove once inventory.map() assigns id to inventory list item
