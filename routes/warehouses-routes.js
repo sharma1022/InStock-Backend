@@ -8,5 +8,6 @@ router.route("/").get(warehouseController.warehouseList);
 router.route("/").post(warehouseController.add);
 
 router.route("/:id").get(warehouseController.findOne);
+router.route("/:id").delete(warehouseController.deleteWarehouse);
 
 module.exports = router;
