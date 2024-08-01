@@ -35,6 +35,17 @@ npm run seed
 
 ### Feature/ GET single item details
 
+-   define inventory page routes
+-   link page routes to inventory controller
+-   define GET request for details of a single item
+-   awaiting database for testing
+-   tested and working
+
+### Feature/ GET all warehouses
+
+-   Create route for GET-warehouse-list
+-   Create controller function to send the list of warehouses
+-   Tested API with Postman, working on my end
 -   Define inventory page routes
 -   Link page routes to inventory controller
 -   Define GET request for details of a single item
