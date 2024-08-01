@@ -74,4 +74,4 @@ const deleteWarehouse = async (req,res) => {
   }
 };
 
-module.exports = { warehouseList, findOne, add };
+module.exports = { warehouseList, findOne, add, deleteWarehouse };
