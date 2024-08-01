@@ -40,3 +40,9 @@ npm run seed
 -   define GET request for details of a single item
 -   awaiting database for testing
 -   tested and working
+
+### Feature/ GET all warehouses
+
+-   Create route for GET-warehouse-list
+-   Create controller function to send the list of warehouses
+-   Tested API with Postman, working on my end
