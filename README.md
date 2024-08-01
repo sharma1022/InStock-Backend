@@ -47,3 +47,10 @@ npm run seed
 - defined DELETE request to delete warehouse based on id to warehouse-controller.js
 - add delete route to warehouse-routes.js
 - tested delete code, added temp variable to test, will remove once warehouse.map() assigns id to warehouse list item
+
+### Feature/ GET all warehouses
+
+- Create route for GET-warehouse-list
+- Create controller function to send the list of warehouses
+- Tested API with Postman, working on my end
+
