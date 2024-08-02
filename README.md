@@ -40,6 +40,15 @@ npm run seed
 -   define GET request for details of a single item
 -   awaiting database for testing
 -   tested and working
+-   add in a join for warehouse name
+-   retested
+
+### Feature/ DELETE warehouse entry
+
+-   added cors declaration to server.js
+-   defined DELETE request to delete warehouse based on id to warehouse-controller.js
+-   add delete route to warehouse-routes.js
+-   tested delete code, added temp variable to test, will remove once warehouse.map() assigns id to warehouse list item
 
 ### Feature/ GET all warehouses
 
