@@ -58,4 +58,6 @@ npm run seed
 
 -   Create controller function
 -   Chose the cascading style of 'if/else if' checks for validation so that reponses could be specific
--   Awaiting 'GET warehouse-list' API to be completed so that the warehouse # can be checked
+-   Awaiting 'GET warehouse-list' API to be completed so that the warehouse # can be checked (resolved)
+-   Add check for valid warehouse ID
+-   Tested

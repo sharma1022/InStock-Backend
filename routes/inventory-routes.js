@@ -5,7 +5,7 @@ const inventoryController = require("../controllers/inventory-controllers");
 
 //delegate request processing to the controller functions
 
-//add a new item:
+//add a new item to the database:
 router.route("/").post(inventoryController.addItem);
 
 //get the details of a single item:
