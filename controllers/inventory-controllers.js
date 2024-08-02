@@ -15,12 +15,12 @@ const inventoryList = async (req, res) => {
 //get detail for a specific item:
 const details = async (req, res) => {
 	try {
-		const itemFound = await knex("inventories").where({
-			id: req.params.id,
-		});
+		const itemFound = await knex("inventories")
+			.select("inventories.*", "warehouses.warehouse_name")
+			.join("warehouses", "inventories.warehouse_id", "warehouses.id")
+			.where("inventories.id", req.params.id);
 
 		if (itemFound.length === 0) {
-			console.log(itemFound);
 			return res.status(404).json({
 				message: `Item ID ${req.params.id} not found`,
 			});
