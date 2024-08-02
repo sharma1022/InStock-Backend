@@ -30,49 +30,42 @@ const details = async (req, res) => {
 //post a new item to the database:
 const addItem = async (req, res) => {
 	//destructure request body to make validation easier:
-	const {
-		item_name,
-		description,
-		category,
-		status,
-		quantity,
-		warehouse_id,
-	} = req.body;
-
-	//ensure that all form data is provided:
-	if (
-		!item_name ||
-		!description ||
-		!category ||
-		!status ||
-		!quantity ||
-		!warehouse_id
-	) {
-		return res.status(400).json({
-			message: `Please fill in each of the provided fields`,
-		});
-	} else if (warehouse_id > numberOfWarehouses) {
-		//check that a valid warehouse was selected:
-		return res.status(400).json({
-			message: `Please choose a valid warehouse`,
-		});
-	} else if (typeof quantity !== "number") {
-		//check that 'quantity' is a number:
-		return res.status(400).json({
-			message: `Please enter the quantity as a number`,
-		});
-	}
+	const { item_name, description, category, status, quantity, warehouse_id } =
+		req.body;
 
 	try {
+		//grab current list of warehouses:
+		const warehouseList = await knex("warehouses");
+
+		//ensure that all form data is provided:
+		if (
+			!warehouse_id ||
+			!item_name ||
+			!description ||
+			!category ||
+			!status ||
+			//ensure 'quantity' is a number:
+			typeof quantity !== "number"
+		) {
+			return res.status(400).json({
+				message: `Please fill in each of the provided fields`,
+			});
+		}
+
+		//check that a valid warehouse was selected:
+		const specifiedWarehouse = warehouseList.find(
+			warehouse => warehouse.id === warehouse_id
+		);
+
+		//insert the new item data into the table:
 		const newInventoryItem = await knex("inventories")
-			//insert the new item data into the table:
 			.insert({
+				warehouse_id,
 				item_name,
 				description,
 				category,
 				status,
 				quantity,
-				warehouse_id,
 			})
 			//return the newly created item:
 			.returning("*");
@@ -82,7 +75,7 @@ const addItem = async (req, res) => {
 	} catch (error) {
 		//error message:
 		res.status(500).json({
-			message: `Unable to add new inventory item to database: ${error}`,
+			message: `Unable to add new inventory item to database: ${error.message}`,
 		});
 	}
 };
