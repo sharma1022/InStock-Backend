@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 8080;
-const cors = require('cors');
 require("dotenv").config();
 
 //enable express to read json responses:
