@@ -12,6 +12,31 @@ const warehouseList = async (req, res) => {
 	}
 };
 
+//GET list of inventory from specific warehouses:
+const warehouseInventoryList = async (req, res) => {
+	try {
+
+    const warehouses = await knex("warehouses").where({
+			id: req.params.id,
+		});
+
+    if (warehouses.length === 0) {
+			return res.status(404).json({
+				message: `Warehouse with ID ${req.params.id} not found`,
+			});
+		}
+    
+		const inventory = await knex("inventories")
+			.where({warehouse_id: req.params.id});
+    res.json(inventory)
+
+	} catch (error) {
+		res.status(400).json({
+			message: `Unable to retrieve for items for warehouse ${req.params.id}`,
+		});
+	}
+};
+
 //GET /warehouses/:id
 const findOne = async (req, res) => {
 	try {
@@ -74,4 +99,4 @@ const deleteWarehouse = async (req,res) => {
   }
 };
 
-module.exports = { warehouseList, findOne, add, deleteWarehouse };
+module.exports = { warehouseList, warehouseInventoryList, findOne, add, deleteWarehouse };
