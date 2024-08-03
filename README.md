@@ -52,13 +52,30 @@ npm run seed
 
 ### Feature/ GET all warehouses
 
-- Create route for GET-warehouse-list
-- Create controller function to send the list of warehouses
-- Tested API with Postman, working on my end
+feature/post-new-item_t28
+-   Create route for GET-warehouse-list
+-   Create controller function to send the list of warehouses
+-   Tested API with Postman, working on my end
+-   Define inventory page routes
+-   Link page routes to inventory controller
+-   Define GET request for details of a single item
+-   Awaiting database for testing (resolved)
+-   Migrate database tables
+-   Tested and working
+-   Seed database tables
+
+### Feature/ POST new inventory item
+
+-   Create controller function
+-   Chose the cascading style of 'if/else if' checks for validation so that reponses could be specific
+-   Awaiting 'GET warehouse-list' API to be completed so that the warehouse # can be checked (resolved)
+-   Add check for valid warehouse ID
+-   Tested
 
 ### Feature/ DELETE inventory item by id
 
 - defined DELETE request to delete an inventory item based on its id
 - add delete route to inventory-routes.js
 - tested delete code, added temp variables to test, will remove once inventory.map() assigns id to inventory list item
+
 
