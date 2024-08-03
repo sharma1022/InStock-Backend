@@ -12,7 +12,7 @@ const inventoryList = async (req, res) => {
 	}
 };
 
-//get detail for a specific item:
+//GET detail for a specific item:
 const details = async (req, res) => {
 	try {
 		const itemFound = await knex("inventories")
@@ -38,8 +38,7 @@ const details = async (req, res) => {
 	}
 };
 
-
-//post a new item to the database:
+//POST a new item to the database:
 const addItem = async (req, res) => {
 	//destructure request body to make validation easier:
 	const { item_name, description, category, status, quantity, warehouse_id } =
@@ -92,26 +91,24 @@ const addItem = async (req, res) => {
 	}
 };
 
-// DELETE inventory item by id
-const deleteInventroyItem = async (req,res) => {
-  try {
-    const itemExists = await knex("inventories").where({id: req.params.id});
-    if(itemExists.length === 0){
-      return res.status(404).json({
-        message: `Inventory Item with ID ${req.params.id} not found`
-      });
-    }
-    await knex("inventories")
-    .where({id: req.params.id})
-    .del();
-    res.sendStatus(204);
-  } catch (e) {
-   res.status(500).json({
-    message: `Unable to retrieve item data for inventory item with ID ${req.params.id}`
-   }) 
-  }
-}
+//DELETE inventory item by id
+const deleteInventroyItem = async (req, res) => {
+	try {
+		const itemExists = await knex("inventories").where({
+			id: req.params.id,
+		});
+		if (itemExists.length === 0) {
+			return res.status(404).json({
+				message: `Inventory Item with ID ${req.params.id} not found`,
+			});
+		}
+		await knex("inventories").where({ id: req.params.id }).del();
+		res.sendStatus(204);
+	} catch (e) {
+		res.status(500).json({
+			message: `Unable to retrieve item data for inventory item with ID ${req.params.id}`,
+		});
+	}
+};
 
-
-module.exports = { details, inventoryList, deleteInventroyItem };
-
+module.exports = { details, inventoryList, addItem, deleteInventroyItem };
