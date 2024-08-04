@@ -18,6 +18,6 @@ router.route("/:id").get(inventoryController.details);
 router
   .route("/:id")
   .delete(inventoryController.deleteInventroyItem)
-  .patch(inventoryController.update);
+  .put(inventoryController.update);
 
 module.exports = router;

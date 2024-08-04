@@ -36,7 +36,7 @@ const details = async (req, res) => {
   }
 };
 
-// PATCH /inventory/:id
+// PUT /inventory/:id
 const update = async (req, res) => {
   try {
     const rowsUpdated = await knex("inventories")
@@ -48,7 +48,7 @@ const update = async (req, res) => {
         message: `Inventory item with ID ${req.params.id} not found`,
       });
     }
-    const updatedInventoryItem = await knex("user").where({
+    const updatedInventoryItem = await knex("inventories").where({
       id: req.params.id,
     });
 
@@ -56,7 +56,7 @@ const update = async (req, res) => {
   } catch (e) {
     res
       .status(500)
-      .json({ message: `Uable to update user with ID ${req.params.id}: ${e}` });
+      .json({ message: `Uable to update inventory with ID ${req.params.id}: ${e}` });
   }
 };
 
@@ -133,4 +133,4 @@ const deleteInventroyItem = async (req, res) => {
 	}
 };
 
-module.exports = { details, inventoryList, addItem, deleteInventroyItem };
+module.exports = { details, inventoryList, addItem, deleteInventroyItem, update };
