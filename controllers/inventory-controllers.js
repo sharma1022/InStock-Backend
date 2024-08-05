@@ -27,15 +27,37 @@ const details = async (req, res) => {
 			});
 		}
 
-		//return the found item details:
-		const itemDetails = itemFound[0];
-		res.json(itemDetails);
-	} catch (error) {
-		//error message:
-		res.status(500).json({
-			message: `Unable to retrieve data for item ID ${req.params.id}`,
-		});
-	}
+    const itemDetails = itemFound[0];
+    res.json(itemDetails);
+  } catch (error) {
+    res.status(500).json({
+      message: `Unable to retrieve data for item ID ${req.params.id}`,
+    });
+  }
+};
+
+// PUT /inventory/:id
+const update = async (req, res) => {
+  try {
+    const rowsUpdated = await knex("inventories")
+      .where({ id: req.params.id })
+      .update(req.body);
+
+    if (rowsUpdated === 0) {
+      return res.status(404).json({
+        message: `Inventory item with ID ${req.params.id} not found`,
+      });
+    }
+    const updatedInventoryItem = await knex("inventories").where({
+      id: req.params.id,
+    });
+
+    res.json(updatedInventoryItem[0]);
+  } catch (e) {
+    res
+      .status(500)
+      .json({ message: `Uable to update inventory with ID ${req.params.id}: ${e}` });
+  }
 };
 
 //POST a new item to the database:
@@ -111,4 +133,4 @@ const deleteInventroyItem = async (req, res) => {
 	}
 };
 
-module.exports = { details, inventoryList, addItem, deleteInventroyItem };
+module.exports = { details, inventoryList, addItem, deleteInventroyItem, update };
