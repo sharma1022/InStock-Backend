@@ -101,29 +101,6 @@ const editWarehouse = async (req,res) => {
   }
 }
 
-//PUT /warehouses/:id
-const editWarehouse = async (req,res) => {
-  try{
-    const findWarehouse = await knex("warehouses").where({id: req.params.id});
-    if(findWarehouse.length === 0) {
-      return res.status(404).json({
-        message: `Warehouse with ID ${req.params.id} not found`,
-      });
-    }
-    if(!req.body.warehouse_name || !req.body.address || !req.body.city || !req.body.country || !req.body.contact_name || !req.body.contact_position || !req.body.contact_phone || !req.body.contact_email){
-    return res.status(400).json({
-      message:"Missing Information"
-      });
-    }
-
-    const result = await knex("warehouses").where({id: req.params.id}).update(req.body);
-    const updatedWarehouse = await knex("warehouses").where({id: req.params.id});
-    res.status(200).json(updatedWarehouse);
-  } catch(e){
-    res.status(500).json({message:`Unable to edit data for warehouse with ID ${req.params.id}: ${error}`});
-  }
-}
-
 //DELETE /warehouses/:id
 const deleteWarehouse = async (req,res) => {
   try {
