@@ -3,7 +3,9 @@ const knex = require("knex")(require("../knexfile"));
 //GET list of all inventories:
 const inventoryList = async (req, res) => {
 	try {
-		const data = await knex("inventories");
+		const data = await knex("inventories")
+		.select("inventories.*", "warehouses.warehouse_name")
+		.join("warehouses", "inventories.warehouse_id", "warehouses.id")
 		res.status(200).json(data);
 	} catch (error) {
 		res.status(400).json({
