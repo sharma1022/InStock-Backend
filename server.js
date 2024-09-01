@@ -1,9 +1,9 @@
 //enable express:
 const express = require("express");
 const app = express();
-const cors = require('cors');
-const PORT = process.env.PORT || 8080;
 require("dotenv").config();
+const cors = require("cors");
+const PORT = process.env.PORT || 5550;
 
 //enable express to read json responses:
 app.use(express.json());

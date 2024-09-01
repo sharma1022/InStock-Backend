@@ -4,8 +4,8 @@ const knex = require("knex")(require("../knexfile"));
 const inventoryList = async (req, res) => {
 	try {
 		const data = await knex("inventories")
-		.select("inventories.*", "warehouses.warehouse_name")
-		.join("warehouses", "inventories.warehouse_id", "warehouses.id")
+			.select("inventories.*", "warehouses.warehouse_name")
+			.join("warehouses", "inventories.warehouse_id", "warehouses.id");
 		res.status(200).json(data);
 	} catch (error) {
 		res.status(400).json({
@@ -29,37 +29,37 @@ const details = async (req, res) => {
 			});
 		}
 
-    const itemDetails = itemFound[0];
-    res.json(itemDetails);
-  } catch (error) {
-    res.status(500).json({
-      message: `Unable to retrieve data for item ID ${req.params.id}`,
-    });
-  }
+		const itemDetails = itemFound[0];
+		res.json(itemDetails);
+	} catch (error) {
+		res.status(500).json({
+			message: `Unable to retrieve data for item ID ${req.params.id}`,
+		});
+	}
 };
 
 // PUT /inventory/:id
 const update = async (req, res) => {
-  try {
-    const rowsUpdated = await knex("inventories")
-      .where({ id: req.params.id })
-      .update(req.body);
+	try {
+		const rowsUpdated = await knex("inventories")
+			.where({ id: req.params.id })
+			.update(req.body);
 
-    if (rowsUpdated === 0) {
-      return res.status(404).json({
-        message: `Inventory item with ID ${req.params.id} not found`,
-      });
-    }
-    const updatedInventoryItem = await knex("inventories").where({
-      id: req.params.id,
-    });
+		if (rowsUpdated === 0) {
+			return res.status(404).json({
+				message: `Inventory item with ID ${req.params.id} not found`,
+			});
+		}
+		const updatedInventoryItem = await knex("inventories").where({
+			id: req.params.id,
+		});
 
-    res.json(updatedInventoryItem[0]);
-  } catch (e) {
-    res
-      .status(500)
-      .json({ message: `Uable to update inventory with ID ${req.params.id}: ${e}` });
-  }
+		res.json(updatedInventoryItem[0]);
+	} catch (e) {
+		res.status(500).json({
+			message: `Uable to update inventory with ID ${req.params.id}: ${e}`,
+		});
+	}
 };
 
 //POST a new item to the database:
@@ -116,7 +116,7 @@ const addItem = async (req, res) => {
 };
 
 //DELETE inventory item by id
-const deleteInventroyItem = async (req, res) => {
+const deleteInventoryItem = async (req, res) => {
 	try {
 		const itemExists = await knex("inventories").where({
 			id: req.params.id,
@@ -135,4 +135,10 @@ const deleteInventroyItem = async (req, res) => {
 	}
 };
 
-module.exports = { details, inventoryList, addItem, deleteInventroyItem, update };
+module.exports = {
+	details,
+	inventoryList,
+	addItem,
+	deleteInventoryItem,
+	update,
+};
