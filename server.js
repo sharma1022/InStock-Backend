@@ -15,6 +15,10 @@ const warehouseRoutes = require("./routes/warehouses-routes");
 app.use("/inventory", inventoryRoutes);
 app.use("/warehouses", warehouseRoutes);
 
+app.get("/", (req, res) => {
+	res.send("Welcome to the InStock API!");
+});
+
 app.listen(PORT, () => {
 	console.log(`running at http://localhost:${PORT} 👍`);
 });
